@@ -1,15 +1,13 @@
-def main():
-    full_name = "Наконечная Анастасия Евгеньевна"
-    group_number = "M1125-38.04.05фт"
-
-    print("=" * 50)
-    print(f"ФИО: {full_name}")
-    print(f"Номер группы: {group_number}")
-    print("=" * 50)
-
-main()
-
-steps = None
-users = "nakonecnaaanastasiags-prog"
-name = "run_script"
-print(f"Running script for user: {users}")
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g bats
+      - run: bats -v
