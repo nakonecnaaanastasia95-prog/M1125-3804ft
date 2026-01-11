@@ -1,13 +1,27 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: Run Python Script on Push
+on:
+push:
+branches: [ main, master ]
+workflow_dispatch:
 jobs:
-  check-bats-version:
+  run-python-script:
     runs-on: ubuntu-latest
+    name: Print Name and Group Number
+    
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          node-version: '20'
-      - run: npm install -g bats
-      - run: bats -v
+          python-version: '3.11'
+      - name: Run name.py script
+        run: |
+          echo "=== Запуск name.py ==="
+          python name.py
+          echo "=== Завершено ==="
+      - name: Run run_script.py
+        run: |
+          echo "=== Запуск run_script.py ==="
+          python run_script.py
+          echo "=== Завершено ==="
