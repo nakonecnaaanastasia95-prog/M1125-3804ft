@@ -1,0 +1,10 @@
+def main():
+    full_name = "Наконечная Анастасия Евгеньевна"
+    group_number = "M1125-38.04.05фт"
+
+    print("=" * 50)
+    print(f"ФИО: {full_name}")
+    print(f"Номер группы: {group_number}")
+    print("=" * 50)
+
+main()
